@@ -1,0 +1,9 @@
+{
+  "name": "hello-world",
+  "version": "1.0.0",
+  "description": "Web Component example using Polymer",
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.0.0",
+    "hello-world": "*"
+  }
+}
