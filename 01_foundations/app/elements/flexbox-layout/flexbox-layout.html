@@ -81,6 +81,24 @@
       .wrap-reverse {
         @apply(--layout-wrap-reverse);
       }
+      .center-full {
+        @apply(--layout-center);
+        @apply(--layout-center-justified);
+      }
+      .flex-1 { @apply(--layout-flex-1); }
+      .flex-2 { @apply(--layout-flex-2); }
+      .flex-3 { @apply(--layout-flex-3); }
+      .flex-4 { @apply(--layout-flex-4); }
+      .flex-5 { @apply(--layout-flex-5); }
+      .flex-6 { @apply(--layout-flex-6); }
+      .flex-7 { @apply(--layout-flex-7); }
+      .flex-8 { @apply(--layout-flex-8); }
+      .flex-9 { @apply(--layout-flex-9); }
+      .flex-10 { @apply(--layout-flex-10); }
+      .flex-11 { @apply(--layout-flex-11); }
+      .flex-12 { @apply(--layout-flex-12); }
+      .flex-none { @apply(--layout-flex-none); }
+      .flex-auto { @apply(--layout-flex-auto); }
     </style>
     <p>See also <a href="https://elements.polymer-project.org/guides/flex-layout"
       >https://elements.polymer-project.org/guides/flex-layout</a></p>
@@ -121,7 +139,7 @@
     </div>
 
     <h2>Cross-axis alignment</h2>
-    <p>start, center, end</p>
+    <ul><li>start, center, end</li></ul>
 
     Vertically centered in horizontal layout
     <div class="horizontal tight center">
@@ -312,6 +330,48 @@
       <div>Four</div>
       <div>Five</div>
     </div>
+
+
+    <h2>More</h2>
+
+    Fully centered
+    <div class="horizontal center-full" style="height: 200px">
+      <div>Centered</div>
+    </div>
+
+    Fill
+    <div class="horizontal">
+      <div class="flex vertical">
+        <div class="flex center-full">Fill</div>
+      </div>
+    </div>
+
+    Flex 1-12
+    <div class="horizontal">
+      <div class="flex-1">1</div>
+      <div class="flex-2">2</div>
+      <div class="flex-3">3</div>
+      <div class="flex-4">4</div>
+      <div class="flex-5">5</div>
+      <div class="flex-6">6</div>
+      <div class="flex-7">7</div>
+      <div class="flex-8">8</div>
+      <div class="flex-9">9</div>
+      <div class="flex-10">10</div>
+      <div class="flex-11">11</div>
+      <div class="flex-12">12</div>
+    </div>
+
+    Flex none and auto
+    <div class="horizontal">
+      <div class="flex-none">flex-none</div>
+      <div class="flex-auto">flex-auto</div>
+    </div>
+
+
+    <h2>Fitting</h2>
+
+
   </template>
 
   <script>
