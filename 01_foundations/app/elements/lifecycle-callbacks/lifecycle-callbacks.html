@@ -1,0 +1,45 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<dom-module id="lifecycle-callbacks">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <div id="shortcut"></div>
+  </template>
+
+  <script>
+    (function() {
+      Polymer({
+        is: 'lifecycle-callbacks',
+
+        created: function() {
+          console.log(this.localName + '#' + this.id + ' was created');
+        },
+
+        ready: function() {
+          console.log(this.localName + '#' + this.id + ' has local DOM initialized');
+          this.$.shortcut.textContent = this.localName + '#' + this.id + ' Local DOM ready';
+        },
+
+        factoryImpl: function() {
+          console.log(this.localName + '#' + this.id + ' has a custom constructor');
+        },
+
+        attached: function() {
+          console.log(this.localName + '#' + this.id + ' was attached');
+        },
+
+        detached: function() {
+          console.log(this.localName + '#' + this.id + ' was detached');
+        },
+
+        attributeChanged: function(name, type) {
+          console.log(this.localName + '#' + this.id + ' attribute ' + name +
+            ' was changed to ' + this.getAttribute(name));
+        }
+      });
+    })();
+  </script>
+</dom-module>

@@ -1,0 +1,324 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<dom-module id="flexbox-layout">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+      div {
+        display: flex;
+        background-color: #9f9f9f;
+        border: 1px solid #333;
+        padding: 8px;
+        margin: 0px 8px 8px 0px;
+      }
+      div > div {
+        background-color: #f9f9f9;
+      }
+
+      .horizontal {
+        @apply(--layout-horizontal);
+      }
+      .vertical {
+        height: 200px;
+        @apply(--layout-vertical);
+      }
+      .flex {
+        @apply(--layout-flex);
+      }
+      .center {
+        @apply(--layout-center);
+      }
+      .tight {
+        height: 100px;
+      }
+      .start {
+        @apply(--layout-start)
+      }
+      .end {
+        @apply(--layout-end)
+      }
+      .start-justified {
+        @apply(--layout-start-justified);
+      }
+      .center-justified {
+        @apply(--layout-center-justified);
+      }
+      .end-justified {
+        @apply(--layout-end-justified);
+      }
+      .justified {
+        @apply(--layout-justified);
+      }
+      .around-justified {
+        @apply(--layout-around-justified);
+      }
+      .self-start {
+        @apply(--layout-self-start);
+      }
+      .self-center {
+        @apply(--layout-self-center);
+      }
+      .self-end {
+        @apply(--layout-self-end);
+      }
+      .self-stretch {
+        @apply(--layout-self-stretch);
+      }
+      .wrap {
+        @apply(--layout-wrap);
+      }
+      .thin {
+        width: 150px;
+      }
+      .horizontal-reverse {
+        @apply(--layout-horizontal-reverse);
+      }
+      .vertical-reverse {
+        @apply(--layout-vertical-reverse);
+      }
+      .wrap-reverse {
+        @apply(--layout-wrap-reverse);
+      }
+    </style>
+    <p>See also <a href="https://elements.polymer-project.org/guides/flex-layout"
+      >https://elements.polymer-project.org/guides/flex-layout</a></p>
+
+    Normal div
+    <div>
+      <div>One</div>
+      <div>Two</div>
+      <div>Three</div>
+    </div>
+
+    With layout horizontal
+    <div class="horizontal">
+      <div>One</div>
+      <div>Two</div>
+      <div>Three</div>
+    </div>
+
+    Horizontal with flex
+    <div class="horizontal">
+      <div>One</div>
+      <div class="flex">Two (flex)</div>
+      <div>Three</div>
+    </div>
+
+    With layout vertical
+    <div class="vertical">
+      <div>One</div>
+      <div>Two</div>
+      <div>Three</div>
+    </div>
+
+    Vertical with flex
+    <div class="vertical">
+      <div>One</div>
+      <div class="flex">Two (flex)</div>
+      <div>Three</div>
+    </div>
+
+    <h2>Cross-axis alignment</h2>
+    <p>start, center, end</p>
+
+    Vertically centered in horizontal layout
+    <div class="horizontal tight center">
+      <div>Centered</div>
+    </div>
+
+    Horizontally centered in vertical layout
+    <div class="vertical tight center">
+      <div>Centered</div>
+    </div>
+
+    Start in horizontal layout
+    <div class="horizontal tight start">
+      <div>Start</div>
+    </div>
+    End in horizontal layout
+    <div class="horizontal tight end">
+      <div>End</div>
+    </div>
+
+    Start in vertical layout
+    <div class="vertical tight start">
+      <div>Start</div>
+    </div>
+    End in vertical layout
+    <div class="vertical tight end">
+      <div>End</div>
+    </div>
+
+    <h2>Main axis alignment (justification)</h2>
+    <p>start, center, end, justified (even), around-justified (even with space on outside)</p>
+
+    Start-justified in horizontal layout
+    <div class="horizontal start-justified">
+      <div>start-justified</div>
+    </div>
+    End-justified in horizontal layout
+    <div class="horizontal end-justified">
+      <div>end-justified</div>
+    </div>
+    Center-justified in horizontal layout
+    <div class="horizontal center-justified">
+      <div>center-justified</div>
+    </div>
+    Justified in horizontal layout
+    <div class="horizontal justified">
+      <div>justified</div>
+      <div>justified</div>
+      <div>justified</div>
+    </div>
+    Around justified in horizontal layout
+    <div class="horizontal around-justified">
+      <div>around-justified</div>
+      <div>around-justified</div>
+      <div>around-justified</div>
+    </div>
+
+    Start-justified in vertical layout
+    <div class="vertical tight start-justified">
+      <div>start-justified</div>
+    </div>
+    End-justified in vertical layout
+    <div class="vertical tight end-justified">
+      <div>end-justified</div>
+    </div>
+    Center-justified in vertical layout
+    <div class="vertical tight center-justified">
+      <div>center-justified</div>
+    </div>
+    Justified in vertical layout
+    <div class="vertical justified">
+      <div>justified</div>
+      <div>justified</div>
+      <div>justified</div>
+    </div>
+    Around justified in vertical layout
+    <div class="vertical around-justified">
+      <div>around-justified</div>
+      <div>around-justified</div>
+      <div>around-justified</div>
+    </div>
+
+
+    <h2>Self alignment</h2>
+    <ul><li>Classes/mixins go on child, not parent.</li>
+    <li>Follow cross-axis behavior</li>
+    <li>start, center, end, stretch</li></ul>
+
+    Self alignment in horizontal layout
+    <div class="horizontal" style="height: 250px">
+      <div class="self-start">self-start</div>
+      <div class="self-center">self-center</div>
+      <div class="self-end">self-end</div>
+      <div class="self-stretch">self-stretch</div>
+    </div>
+
+    Self alignment in vertical layout
+    <div class="vertical" style="height: 250px">
+      <div class="self-start">self-start</div>
+      <div class="self-center">self-center</div>
+      <div class="self-end">self-end</div>
+      <div class="self-stretch">self-stretch</div>
+    </div>
+
+
+    <h2>Wrapping</h2>
+
+    Horizontal without wrap
+    <div class="horizontal thin">
+      <div>One</div>
+      <div>Two</div>
+      <div>Three</div>
+      <div>Four</div>
+    </div>
+    Horizontal with wrap
+    <div class="horizontal thin wrap">
+      <div>One</div>
+      <div>Two</div>
+      <div>Three</div>
+      <div>Four</div>
+    </div>
+
+    Vertical without wrap
+    <div class="vertical tight">
+      <div>One</div>
+      <div>Two</div>
+      <div>Three</div>
+      <div>Four</div>
+      <div>Five</div>
+    </div>
+    <br />
+    Vertical with wrap
+    <div class="vertical tight wrap">
+      <div>One</div>
+      <div>Two</div>
+      <div>Three</div>
+      <div>Four</div>
+      <div>Five</div>
+    </div>
+
+
+    <h2>Reverse layouts</h2>
+    <ul><li>horizontal-reverse, vertical-reverse, wrap-reverse</li></ul>
+
+    Horizontal reverse
+    <div class="horizontal-reverse">
+      <div>One</div>
+      <div>Two</div>
+      <div>Three</div>
+    </div>
+    Horizontal reverse with wrap
+    <div class="horizontal-reverse wrap thin">
+      <div>One</div>
+      <div>Two</div>
+      <div>Three</div>
+      <div>Four</div>
+    </div>
+    Horizontal reverse, wrap reverse
+    <div class="horizontal-reverse wrap-reverse thin">
+      <div>One</div>
+      <div>Two</div>
+      <div>Three</div>
+      <div>Four</div>
+    </div>
+
+    Vertical reverse
+    <br /><br />
+    <div class="vertical-reverse tight">
+      <div>One</div>
+      <div>Two</div>
+      <div>Three</div>
+      <div>Four</div>
+      <div>Five</div>
+    </div>
+    Vertical reverse with wrap
+    <div class="vertical-reverse wrap tight">
+      <div>One</div>
+      <div>Two</div>
+      <div>Three</div>
+      <div>Four</div>
+      <div>Five</div>
+    </div>
+    Vertical reverse, wrap reverse
+    <div class="vertical-reverse wrap-reverse tight">
+      <div>One</div>
+      <div>Two</div>
+      <div>Three</div>
+      <div>Four</div>
+      <div>Five</div>
+    </div>
+  </template>
+
+  <script>
+    (function() {
+      Polymer({
+        is: 'flexbox-layout'
+      });
+    })();
+  </script>
+</dom-module>
