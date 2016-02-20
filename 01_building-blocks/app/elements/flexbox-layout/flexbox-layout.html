@@ -17,74 +17,31 @@
         background-color: #f9f9f9;
       }
 
-      .horizontal {
-        @apply(--layout-horizontal);
-      }
-      .vertical {
-        height: 200px;
-        @apply(--layout-vertical);
-      }
-      .flex {
-        @apply(--layout-flex);
-      }
-      .center {
-        @apply(--layout-center);
-      }
-      .tight {
-        height: 100px;
-      }
-      .start {
-        @apply(--layout-start)
-      }
-      .end {
-        @apply(--layout-end)
-      }
-      .start-justified {
-        @apply(--layout-start-justified);
-      }
-      .center-justified {
-        @apply(--layout-center-justified);
-      }
-      .end-justified {
-        @apply(--layout-end-justified);
-      }
-      .justified {
-        @apply(--layout-justified);
-      }
-      .around-justified {
-        @apply(--layout-around-justified);
-      }
-      .self-start {
-        @apply(--layout-self-start);
-      }
-      .self-center {
-        @apply(--layout-self-center);
-      }
-      .self-end {
-        @apply(--layout-self-end);
-      }
-      .self-stretch {
-        @apply(--layout-self-stretch);
-      }
-      .wrap {
-        @apply(--layout-wrap);
-      }
-      .thin {
-        width: 150px;
-      }
-      .horizontal-reverse {
-        @apply(--layout-horizontal-reverse);
-      }
-      .vertical-reverse {
-        @apply(--layout-vertical-reverse);
-      }
-      .wrap-reverse {
-        @apply(--layout-wrap-reverse);
-      }
-      .center-full {
-        @apply(--layout-center);
-        @apply(--layout-center-justified);
-      }
+      .vtall { height: 200px; }
+      .vshort { height: 100px; }
+      .htall { height: 100px; }
+      .thin { width: 150px; }
+
+      .layout { @apply(--layout); }
+      .horizontal { @apply(--layout-horizontal); }
+      .vertical { @apply(--layout-vertical); }
+      .flex { @apply(--layout-flex); }
+      .center { @apply(--layout-center); }
+      .start { @apply(--layout-start) }
+      .end { @apply(--layout-end) }
+      .start-justified { @apply(--layout-start-justified); }
+      .center-justified { @apply(--layout-center-justified); }
+      .end-justified { @apply(--layout-end-justified); }
+      .justified { @apply(--layout-justified); }
+      .around-justified { @apply(--layout-around-justified);  }
+      .self-start { @apply(--layout-self-start);  }
+      .self-center { @apply(--layout-self-center); }
+      .self-end { @apply(--layout-self-end); }
+      .self-stretch { @apply(--layout-self-stretch); }
+      .wrap { @apply(--layout-wrap); }
+      .horizontal-reverse { @apply(--layout-horizontal-reverse); }
+      .vertical-reverse { @apply(--layout-vertical-reverse); }
+      .wrap-reverse {  @apply(--layout-wrap-reverse);  }
       .flex-1 { @apply(--layout-flex-1); }
       .flex-2 { @apply(--layout-flex-2); }
       .flex-3 { @apply(--layout-flex-3); }
@@ -99,7 +56,24 @@
       .flex-12 { @apply(--layout-flex-12); }
       .flex-none { @apply(--layout-flex-none); }
       .flex-auto { @apply(--layout-flex-auto); }
+      .fully-centered {
+        @apply(--layout-center);
+        @apply(--layout-center-justified);
+      }
+      .fill-container {
+        @apply(--layout-horizontal);
+        @apply(--layout-flex);
+        margin: 0px;
+        padding: 0px;
+        border: none;
+      }
+      .fill {
+        @apply(--layout-vertical);
+        @apply(--layout-flex);
+        margin: 0px;
+      }
     </style>
+
     <p>See also <a href="https://elements.polymer-project.org/guides/flex-layout"
       >https://elements.polymer-project.org/guides/flex-layout</a></p>
 
@@ -125,14 +99,14 @@
     </div>
 
     With layout vertical
-    <div class="vertical">
+    <div class="vertical vtall">
       <div>One</div>
       <div>Two</div>
       <div>Three</div>
     </div>
 
     Vertical with flex
-    <div class="vertical">
+    <div class="vertical vtall">
       <div>One</div>
       <div class="flex">Two (flex)</div>
       <div>Three</div>
@@ -142,35 +116,35 @@
     <ul><li>start, center, end</li></ul>
 
     Vertically centered in horizontal layout
-    <div class="horizontal tight center">
+    <div class="horizontal htall center">
       <div>Centered</div>
     </div>
 
     Horizontally centered in vertical layout
-    <div class="vertical tight center">
+    <div class="vertical vshort center">
       <div>Centered</div>
     </div>
 
     Start in horizontal layout
-    <div class="horizontal tight start">
+    <div class="horizontal htall start">
       <div>Start</div>
     </div>
     End in horizontal layout
-    <div class="horizontal tight end">
+    <div class="horizontal htall end">
       <div>End</div>
     </div>
 
     Start in vertical layout
-    <div class="vertical tight start">
+    <div class="vertical vshort start">
       <div>Start</div>
     </div>
     End in vertical layout
-    <div class="vertical tight end">
+    <div class="vertical vshort end">
       <div>End</div>
     </div>
 
     <h2>Main axis alignment (justification)</h2>
-    <p>start, center, end, justified (even), around-justified (even with space on outside)</p>
+    <ul><li>start, center, end, justified (even), around-justified (even with space on outside)</li></ul>
 
     Start-justified in horizontal layout
     <div class="horizontal start-justified">
@@ -198,25 +172,25 @@
     </div>
 
     Start-justified in vertical layout
-    <div class="vertical tight start-justified">
+    <div class="vertical vshort start-justified">
       <div>start-justified</div>
     </div>
     End-justified in vertical layout
-    <div class="vertical tight end-justified">
+    <div class="vertical vshort end-justified">
       <div>end-justified</div>
     </div>
     Center-justified in vertical layout
-    <div class="vertical tight center-justified">
+    <div class="vertical vshort center-justified">
       <div>center-justified</div>
     </div>
     Justified in vertical layout
-    <div class="vertical justified">
+    <div class="vertical vtall justified">
       <div>justified</div>
       <div>justified</div>
       <div>justified</div>
     </div>
     Around justified in vertical layout
-    <div class="vertical around-justified">
+    <div class="vertical vtall around-justified">
       <div>around-justified</div>
       <div>around-justified</div>
       <div>around-justified</div>
@@ -237,7 +211,7 @@
     </div>
 
     Self alignment in vertical layout
-    <div class="vertical" style="height: 250px">
+    <div class="vertical vtall" style="height: 250px">
       <div class="self-start">self-start</div>
       <div class="self-center">self-center</div>
       <div class="self-end">self-end</div>
@@ -263,7 +237,7 @@
     </div>
 
     Vertical without wrap
-    <div class="vertical tight">
+    <div class="vertical vshort">
       <div>One</div>
       <div>Two</div>
       <div>Three</div>
@@ -272,7 +246,7 @@
     </div>
     <br />
     Vertical with wrap
-    <div class="vertical tight wrap">
+    <div class="vertical vshort wrap">
       <div>One</div>
       <div>Two</div>
       <div>Three</div>
@@ -289,6 +263,13 @@
       <div>One</div>
       <div>Two</div>
       <div>Three</div>
+    </div>
+    Horizontal with wrap reverse
+    <div class="horizontal wrap-reverse thin">
+      <div>One</div>
+      <div>Two</div>
+      <div>Three</div>
+      <div>Four</div>
     </div>
     Horizontal reverse with wrap
     <div class="horizontal-reverse wrap thin">
@@ -307,7 +288,15 @@
 
     Vertical reverse
     <br /><br />
-    <div class="vertical-reverse tight">
+    <div class="vertical-reverse vshort">
+      <div>One</div>
+      <div>Two</div>
+      <div>Three</div>
+      <div>Four</div>
+      <div>Five</div>
+    </div>
+    Vertical with wrap reverse
+    <div class="vertical wrap-reverse vshort">
       <div>One</div>
       <div>Two</div>
       <div>Three</div>
@@ -315,7 +304,7 @@
       <div>Five</div>
     </div>
     Vertical reverse with wrap
-    <div class="vertical-reverse wrap tight">
+    <div class="vertical-reverse wrap vshort">
       <div>One</div>
       <div>Two</div>
       <div>Three</div>
@@ -323,7 +312,7 @@
       <div>Five</div>
     </div>
     Vertical reverse, wrap reverse
-    <div class="vertical-reverse wrap-reverse tight">
+    <div class="vertical-reverse wrap-reverse vshort">
       <div>One</div>
       <div>Two</div>
       <div>Three</div>
@@ -335,19 +324,19 @@
     <h2>More</h2>
 
     Fully centered
-    <div class="horizontal center-full" style="height: 200px">
+    <div class="layout fully-centered" style="height: 200px">
       <div>Centered</div>
     </div>
 
     Fill
-    <div class="horizontal">
-      <div class="flex vertical">
-        <div class="flex center-full">Fill</div>
+    <div class="layout vtall">
+      <div class="fill-container">
+        <div class="fill fully-centered">Fill</div>
       </div>
     </div>
 
     Flex 1-12
-    <div class="horizontal">
+    <div class="layout">
       <div class="flex-1">1</div>
       <div class="flex-2">2</div>
       <div class="flex-3">3</div>
@@ -363,14 +352,10 @@
     </div>
 
     Flex none and auto
-    <div class="horizontal">
+    <div class="layout">
       <div class="flex-none">flex-none</div>
       <div class="flex-auto">flex-auto</div>
     </div>
-
-
-    <h2>Fitting</h2>
-
 
   </template>
 

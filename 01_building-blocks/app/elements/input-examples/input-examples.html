@@ -1,0 +1,182 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/iron-input/iron-input.html">
+<dom-module id="input-examples">
+  <template>
+    <style>
+      :host {
+        display: block;
+        @apply(--layout-horizontal);
+        @apply(--layout-justified);
+        @apply(--layout-wrap);
+      }
+      div {
+        display: inline-block;
+        @apply(--layout-flex);
+        background-color: #ccc;
+        padding: 8px;
+        margin: 8px;
+        font-size: small;
+      }
+      input, button {
+        display: block;
+        padding: 4px;
+        margin: 4px 0px;
+      }
+      span {
+        font-style: italic;
+      }
+      .newline {
+        display: block;
+        width: 100%;
+      }
+    </style>
+
+    <p class="newline">See also <a href="https://elements.polymer-project.org/elements/iron-input"
+      >https://elements.polymer-project.org/elements/iron-input</a></p>
+
+    <!--
+      Double-colon binds a property to an event and updates that property when the event occurs.
+      <property>::<event>
+    -->
+
+    <h2 class="newline">Basic input bindings</h2>
+
+    <div>
+     Input
+      <input value="{{input1::input}}"/>
+      Value: <span>{{input1}}</span>
+    </div>
+
+    <div>
+      Input with hint
+      <input value="{{input2::input}}" placeholder="placeholder"/>
+      Value: <span>{{input2}}</span>
+    </div>
+
+    <div>
+      Input with default value
+      <input value="{{input3::input}}"/>
+      Value: <span>{{input3}}</span>
+    </div>
+
+
+    <h2 class="newline">Basic button events</h2>
+
+    <div>
+      Button
+      <button on-tap="doButtonTap">Tap</button>
+    </div>
+
+    <div>
+      Button with args
+      <input value="{{input4::input}}"/>
+      <button on-tap="setButtonText" data-text="{{input4}}">Tap</button>
+    </div>
+
+    <div>
+      Button with args and target
+      <input value="{{input5::input}}"/>
+      <button on-tap="setProp"
+              data-target="input5" data-property="innerHTML" data-value="{{input5}}">Tap</button>
+      Value: <span id="input5"></span>
+    </div>
+
+
+    <h2 class="newline">Iron input</h2>
+
+    <div>
+      iron-input value
+      <input is="iron-input" value="{{input6::input}}"/>
+      Value: <span>{{input6}}</span>
+    </div>
+
+    <div>
+      iron-input value reflection
+      <input is="iron-input" id="input7" value="{{input7::input}}"/>
+      <button on-tap="setProp" data-target="input7" data-property="value"
+              data-value="value changed">change value</button>
+      Value: <span>{{input7}}</span>
+    </div>
+
+    <div>
+      iron-input bind-value
+      <input is="iron-input" bind-value="{{input8::input}}"/>
+      Value: <span>{{input8}}</span>
+    </div>
+
+    <div>
+      iron-input bind-value reflection
+      <input is="iron-input" id="input9" bind-value="{{input9::input}}"/>
+      <button on-tap="setProp" data-target="input9" data-property="bindValue"
+              data-value="bindValue changed">change bind-value</button>
+      Value: <span>{{input9}}</span>
+    </div>
+  </template>
+
+  <script>
+    (function() {
+      Polymer({
+        is: 'input-examples',
+        properties: {
+          input1: String,
+          input2: String,
+          input3: {
+            type: String,
+            value: "default value"
+          },
+          input4: String,
+          input5: String,
+          input6: String,
+          input7: String,
+          input8: String,
+          input9: String,
+          input10: String,
+          input11: String,
+          input12: String,
+          input13: String,
+          input14: String,
+          input15: String,
+          input16: String,
+          input17: String,
+          input18: String,
+          input19: String,
+          input20: String
+        },
+
+        doButtonTap: function(event) {
+          event.target.innerHTML = "Tapped";
+        },
+
+        setButtonText: function(event) {
+          event.target.innerHTML = event.target.dataText;
+        },
+
+        getProp: function(event) {
+          var target = this._findDataArg(event.target, 'target');
+          var prop = this._findDataArg(event.target, 'property');
+          return this.$[target][prop];
+        },
+
+        setProp: function(event) {
+          var target = this._findDataArg(event.target, 'target');
+          var prop = this._findDataArg(event.target, 'property');
+          var value = this._findDataArg(event.target, 'value');
+          console.log('Setting #' + target + '.' + prop + ' = ' + value);
+          this.$[target][prop] = value;
+        },
+
+        /**
+         * The last specified data-<name> attribute is placed as a property on the element,
+         * e.g. element.dataName. Other data-<name> attributes are placed inside the dataset
+         * property, e.g. element.dataset.<name>. Why????
+         */
+        _findDataArg: function(el, name) {
+          var arg = el['data' + name.charAt(0).toUpperCase() + name.slice(1)];
+          if (arg === undefined) arg = el.dataset[name];
+          return arg;
+        }
+      });
+    })();
+  </script>
+</dom-module>

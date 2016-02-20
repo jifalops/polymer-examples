@@ -86,6 +86,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <a data-route="layout" href="{{baseUrl}}layout">
             <span>Layout</span>
           </a>
+
+          <a data-route="input" href="{{baseUrl}}input">
+            <span>Input</span>
+          </a>
         </paper-menu>
       </paper-scroll-header-panel>
 
@@ -118,7 +122,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
             <section data-route="home">
               <paper-material elevation="1">
-                Home!
+                Choose a section from the left.
               </paper-material>
             </section>
 
@@ -137,6 +141,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 <flexbox-layout></flexbox-layout>
               </paper-material>
             </section>
+
+            <section data-route="input">
+              <paper-material elevation="1">
+                <input-examples></input-examples>
+              </paper-material>
+            </section>
+
           </iron-pages>
         </div>
       </paper-scroll-header-panel>
