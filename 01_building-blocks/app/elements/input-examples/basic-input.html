@@ -1,0 +1,308 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/iron-input/iron-input.html">
+<link rel="import" href="../../bower_components/iron-autogrow-textarea/iron-autogrow-textarea.html">
+<link rel="import" href="../../bower_components/iron-dropdown/iron-dropdown.html">
+<dom-module id="input-examples">
+  <template>
+    <style>
+      :host {
+        display: block;
+        @apply(--layout-horizontal);
+        @apply(--layout-justified);
+        @apply(--layout-wrap);
+      }
+      div {
+        display: inline-block;
+        @apply(--layout-flex);
+        background-color: #ccc;
+        padding: 8px;
+        margin: 8px;
+        font-size: small;
+      }
+      div > div {
+        background-color: #f9f9f9;
+        border: 1px solid #333;
+        padding: 8px;
+        margin: 0px 8px 8px 0px;
+      }
+      input, button, iron-autogrow-textarea, iron-dropdown {
+        display: block;
+        padding: 4px;
+        margin: 4px 0px;
+      }
+      /*input { width: 10em; }*/
+      span {
+        font-style: italic;
+      }
+      .newline {
+        display: block;
+        width: 100%;
+      }
+      iron-autogrow-textarea {
+        background-color: #f9f9f9;
+        width: 20em;
+      }
+      iron-dropdown {
+        background-color: #f9f9f9;
+      }
+
+      .dropdown-content {
+        line-height: 20px;
+        border-radius: 3px;
+        padding: 4px;
+        max-width: 250px;
+      }
+
+    </style>
+
+
+    <!--
+      Double-colon binds a property to an event and updates that property when the event occurs.
+      <property>::<event>
+    -->
+
+    <h2 class="newline">Button events</h2>
+
+    <div>
+      Button
+      <button on-tap="doButtonTap">Tap</button>
+    </div>
+
+    <div>
+      Button with args
+      <input value="{{p1::input}}"/>
+      <button on-tap="setButtonText" data-text="{{p1}}">Tap</button>
+    </div>
+
+    <div>
+      Button with args and target
+      <input value="{{p2::input}}"/>
+      Property: <span id="p2"></span>
+      <button on-tap="setProp"
+              data-target="p2" data-property="innerHTML" data-value="{{p2}}">Tap</button>
+    </div>
+
+
+    <h2 class="newline">&lt;input&gt;</h2>
+
+    <div>
+      Input
+      <input id="p3" value="{{p3::input}}"/>
+      Property: <span>{{p3}}</span>
+      <button on-tap="setProp" data-target="p3" data-property="value"
+              data-value="doesn't change property!">Change input value</button>
+    </div>
+
+    <div>
+      Input with hint
+      <input value="{{p4::input}}" placeholder="placeholder"/>
+      Property: <span>{{p4}}</span>
+    </div>
+
+    <div>
+      Input with default value
+      <input value="{{p5::input}}"/>
+      Property: <span>{{p5}}</span>
+    </div>
+
+
+    <h2 class="newline"><a href="https://elements.polymer-project.org/elements/iron-input"
+      >&lt;iron-input&gt;</a></h2>
+
+    <div>
+      iron-input bind-value
+      <input is="iron-input" id="p6" bind-value="{{p6}}"/>
+      Property: <span>{{p6}}</span>
+      <button on-tap="setProp" data-target="p6" data-property="bindValue"
+              data-value="does change property!">Change input bind-value</button>
+    </div>
+
+    <div>
+      Allowed chars: <code>[a-zA-Z0-9_-+.]</code>
+      <input is="iron-input" bind-value="{{p7}}" prevent-invalid-input
+             allowed-pattern="[a-zA-Z0-9_+.\-]"/>
+    </div>
+
+    <div>
+      Validation: Create your own (simple)
+      <input is="iron-input" bind-value="{{p8}}" placeholder="[allowed chars]"/>
+      <input is="iron-input" bind-value="{{p9}}" placeholder="test"
+             prevent-invalid-input allowed-pattern="{{p8}}"/>
+    </div>
+
+    <div>
+      Validation: Create your own (complex)
+      <input is="iron-input" bind-value="{{p10}}" placeholder="[allowed chars]"/>
+      <input is="iron-input" bind-value="{{p11}}" style="width: 40em;"/>
+      <input is="iron-input" bind-value="{{p12}}" style="width: 40em;"
+             prevent-invalid-input allowed-pattern="{{p10}}"/>
+      Result: <span>{{p13}}</span>
+    </div>
+
+
+    <h2 class="newline"><a href="https://elements.polymer-project.org/elements/iron-autogrow-textarea"
+    >&lt;iron-autogrow-textarea&gt;</a></h2>
+
+    <div>
+      Plain as can be (unlimited growth)
+      <iron-autogrow-textarea bind-value="{{p14}}"></iron-autogrow-textarea>
+      Value: <span>{{p14}}</span>
+    </div>
+
+    <div>
+      max-rows = 3
+      <iron-autogrow-textarea bind-value="{{p15}}" max-rows="3"></iron-autogrow-textarea>
+      Value: <span>{{p15}}</span>
+    </div>
+
+    <div>
+      maxlength = 20 (newline can count as two)
+      <iron-autogrow-textarea bind-value="{{p16}}" maxlength="20"></iron-autogrow-textarea>
+      Value: <span>{{p16}}</span><br />
+      Length: {{p16.length}}
+    </div>
+
+    <div>
+      Limited by height
+      <iron-autogrow-textarea bind-value="{{p17}}" style="height: 50px;"></iron-autogrow-textarea>
+      Value: <span>{{p17}}</span>
+    </div>
+
+    <div>
+      Newline to &lt;br /&gt;
+      <iron-autogrow-textarea bind-value="{{p18}}"></iron-autogrow-textarea>
+      Value: <span id="p18"></span>
+    </div>
+
+    <div>
+      Highlight/selection
+      <iron-autogrow-textarea id="p19" on-select="p19select"></iron-autogrow-textarea>
+      selectionStart: {{p19}}, selectionEnd: {{p20}}
+    </div>
+
+
+
+    <h2 class="newline"><a href="https://elements.polymer-project.org/elements/iron-dropdown"
+    >&lt;iron-dropdown&gt;</a></h2>
+
+    <div>
+      <div on-tap="openD1">Plain dropdown</div>
+      <iron-dropdown id="d1">
+        <div class="dropdown-content">asdfasdfdown
+        dropdo wasdfkjs ssssnasddropdo wasdfkjs ssssnasddropdo wasdfkjs ssssnasddropdo wasdfkjs ssssnasddropdo wasdfkjs ssssnasd n
+        </div>
+      </iron-dropdown>
+    </div>
+
+  </template>
+
+  <script>
+    (function() {
+      Polymer({
+        is: 'input-examples',
+
+        properties: {
+          p1: String,
+          p2: String,
+          p3: String,
+          p4: String,
+          p5: {
+            type: String,
+            value: "default value"
+          },
+          p6: String,
+          p7: String,
+          p8: String,
+          p9: String,
+          p10: String,
+          p11: {
+            type: RegExp,
+            value: /^[a-zA-Z0-9][a-zA-Z0-9.+]*@[a-zA-Z0-9\-]+(\.[a-zA-Z\-]+)+$/
+          },
+          p12: {
+            type: String,
+            observer: "p12Observer"
+          },
+          p13: String,
+          p14: String,
+          p15: String,
+          p16: String,
+          p17: String,
+          p18: {
+            type: String,
+            observer: "p18Observer"
+          },
+          p19: String,
+          p20: String,
+        },
+
+        doButtonTap: function(event) {
+          event.target.innerHTML = "Tapped";
+        },
+
+        setButtonText: function(event) {
+          event.target.innerHTML = this.escapeHTML(event.target.dataText);
+        },
+
+        getProp: function(event) {
+          var target = this._findDataArg(event.target, 'target');
+          var prop = this._findDataArg(event.target, 'property');
+          return this.$[target][prop];
+        },
+
+        setProp: function(event) {
+          var target = this._findDataArg(event.target, 'target');
+          var prop = this._findDataArg(event.target, 'property');
+          var value = this._findDataArg(event.target, 'value');
+
+          if (prop == 'innerHTML') value = this.escapeHTML(value);
+
+          if (target == 'this') {
+            console.log('Setting this.' + prop + ' = ' + value);
+            this[prop] = value;
+          } else {
+            console.log('Setting this.$.' + target + '.' + prop + ' = ' + value);
+            this.$[target][prop] = value;
+          }
+        },
+
+        /**
+         * The last specified data-<name> attribute is placed as a property on the element,
+         * e.g. element.dataName. Other data-<name> attributes are placed inside the dataset
+         * property, e.g. element.dataset.<name>. Why????
+         */
+        _findDataArg: function(el, name) {
+          var arg = el['data' + name.charAt(0).toUpperCase() + name.slice(1)];
+          if (arg === undefined) arg = el.dataset[name];
+          return arg;
+        },
+
+        p12Observer: function(value) {
+          this.p13 = this.p11.test(value);
+        },
+        p18Observer: function(value) {
+          this.$.p18.innerHTML = this.escapeHTML(value).replace(/\r?\n/g, "<br />");
+        },
+        p19select: function(event) {
+          this.p19 = this.$.p19.selectionStart;
+          this.p20 = this.$.p19.selectionEnd;
+        },
+
+        escapeHTML: function(unsafe) {
+          return unsafe
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+        },
+
+
+        openD1: function() {
+          this.$.d1.open();
+        }
+      });
+    })();
+  </script>
+</dom-module>
