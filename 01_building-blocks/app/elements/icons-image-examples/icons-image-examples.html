@@ -1,0 +1,123 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../bower_components/iron-icons/av-icons.html">
+<link rel="import" href="../../bower_components/iron-icons/communication-icons.html">
+<link rel="import" href="../../bower_components/iron-icons/device-icons.html">
+<link rel="import" href="../../bower_components/iron-icons/editor-icons.html">
+<link rel="import" href="../../bower_components/iron-icons/hardware-icons.html">
+<link rel="import" href="../../bower_components/iron-icons/image-icons.html">
+<link rel="import" href="../../bower_components/iron-icons/maps-icons.html">
+<link rel="import" href="../../bower_components/iron-icons/notification-icons.html">
+<link rel="import" href="../../bower_components/iron-icons/social-icons.html">
+<link rel="import" href="../../bower_components/iron-icons/places-icons.html">
+<link rel="import" href="../../bower_components/iron-image/iron-image.html">
+<dom-module id="icons-image-examples">
+  <template>
+    <style>
+      :host {
+        display: block;
+        @apply(--layout-horizontal);
+        @apply(--layout-justified);
+        @apply(--layout-wrap);
+      }
+      div {
+        display: inline-block;
+        @apply(--layout-flex);
+        background-color: #ccc;
+        padding: 8px;
+        margin: 8px;
+        font-size: small;
+      }
+      div div {
+        background-color: #f9f9f9;
+        border: 1px solid #333;
+        padding: 8px;
+        margin: 0px 8px 8px 0px;
+      }
+      .newline {
+        display: block;
+        width: 95%;
+      }
+      iframe, iron-icon,iron-icons, iron-iconset, iron-iconset-svg, neon-animation {
+        display: block;
+        padding: 4px;
+        margin: 4px 0px;
+      }
+      iframe {
+        height: 400px;
+        width: 95%;
+      }
+      iron-icon.outline {
+        --iron-icon-stroke-color:blue;
+      }
+      iron-icon.big {
+        height: 48px;
+        width: 48px;
+      }
+      iron-icon.fill {
+        color: red;
+      }
+    </style>
+
+    <h2 class="newline"><a href="https://elements.polymer-project.org/elements/iron-icon"
+    >&lt;iron-icon&gt;</a></h2>
+
+    <div>
+      Simple (default 24x24)
+      <iron-icon icon="star"></iron-icon>
+    </div>
+
+    <div>
+      With outline and/or fill color
+      <!--The 'icons' iconset is default-->
+      <iron-icon icon="icons:favorite" class="outline"></iron-icon>
+      <iron-icon icon="favorite" class="fill"></iron-icon>
+      <iron-icon icon="favorite" class="outline fill"></iron-icon>
+    </div>
+
+    <div>
+      Sized
+      <iron-icon icon="accessibility" class="big"></iron-icon>
+    </div>
+
+    <div>
+      From non-default iconset
+      <iron-icon icon="hardware:router" class="big" style="color:#318952;"></iron-icon>
+    </div>
+
+
+    <h2 class="newline"><a href="https://elements.polymer-project.org/elements/iron-icons"
+    >&lt;iron-icons&gt;</a></h2>
+
+    <p class="newline">See the <a href="https://elements.polymer-project.org/elements/iron-icons?view=demo:demo/index.html&active=iron-icons"
+    >demo</a> (iframe below).</p>
+    <div>
+      <iframe src="https://elements.polymer-project.org/elements/iron-icons?view=demo:demo/index.html&active=iron-icons"></iframe>
+    </div>
+    <p class="newline"></p>
+
+
+    <h2 class="newline"><a href="https://elements.polymer-project.org/elements/iron-image"
+    >&lt;iron-image&gt;</a></h2>
+
+    <p class="newline">See the <a href="https://elements.polymer-project.org/elements/iron-image?view=demo:demo/index.html&active=iron-image"
+    >demo</a> (iframe below).</p>
+    <div>
+      <iframe src="https://elements.polymer-project.org/elements/iron-image?view=demo:demo/index.html&active=iron-image"></iframe>
+    </div>
+    <p class="newline"></p>
+  </template>
+
+  <script>
+    (function() {
+      Polymer({
+        is: 'icons-image-examples',
+
+        properties: {
+
+        }
+      });
+    })();
+  </script>
+</dom-module>

@@ -80,7 +80,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           </a>
 
           <a data-route="lifecycle" href="{{baseUrl}}lifecycle">
-            <span>Lifecycle Callbacks</span>
+            <span>Lifecycle</span>
           </a>
 
           <a data-route="layout" href="{{baseUrl}}layout">
@@ -89,6 +89,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
           <a data-route="input" href="{{baseUrl}}input">
             <span>Input</span>
+          </a>
+
+          <a data-route="icons-images" href="{{baseUrl}}icons-images">
+            <span>Icons/Images</span>
+          </a>
+
+          <a data-route="ajax-forms" href="{{baseUrl}}ajax-forms">
+            <span>AJAX &amp; forms</span>
           </a>
         </paper-menu>
       </paper-scroll-header-panel>
@@ -122,29 +130,130 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
             <section data-route="home">
               <paper-material elevation="1">
-                Choose a section from the left.
+                <div>
+                  Layout
+                  <ul>
+                    <li>iron-flex-layout</li>
+                  </ul>
+                </div>
+
+                <div>
+                  Input
+                  <ul>
+                    <li>iron-autogrow-textarea</li>
+                    <li>iron-collapse</li>
+                    <li>iron-dropdown</li>
+                    <li>iron-input</li>
+                    <li>* iron-label</li>
+                    <li>iron-selector</li>
+                    <li>iron-swipeable-container</li>
+                  </ul>
+                </div>
+
+                <div>
+                  Icons and Images
+                  <ul>
+                    <li>iron-icon</li>
+                    <li>iron-icons</li>
+                    <li>iron-image</li>
+                  </ul>
+                </div>
+
+                <div>
+                  AJAX and Forms
+                  <ul>
+                    <li>iron-ajax</li>
+                    <li>iron-jsonp-library</li>
+                    <li>iron-form</li>
+                  </ul>
+                </div>
+
+                <div>
+                  Data
+                  <ul>
+                    <li>iron-localstorage</li>
+                    <li>firebase-element</li>
+                    <li>iron-meta</li>
+                    <li>iron-signals?</li>
+                  </ul>
+                </div>
+
+                <div>
+                  Environment
+                  <ul>
+                    <li>iron-media-query</li>
+                    <li>iron-page-url</li>
+                    <li>iron-pages?</li>
+                  </ul>
+                </div>
+
+                <div>
+                  Iterative and Conditional
+                  <ul>
+                    <li>iron-list</li>
+                    <li>dom-repeat</li>
+                    <li>dom-if</li>
+                  </ul>
+                </div>
+
+                <div>
+                  Documentation
+                  <ul>
+                    <li>iron-component-page</li>
+                    <li>iron-demo-helpers</li>
+                    <li>iron-doc-viewer</li>
+                    <li>iron-test-helpers</li>
+                  </ul>
+                </div>
+
+                <div>
+                  Animations
+                  <ul>
+                    <li>neon-animation</li>
+                  </ul>
+                </div>
+
+                <div>
+                  Accessibility
+                  <ul>
+                    <li>iron-a11y-announcer</li>
+                    <li>iron-a11y-keys</li>
+                  </ul>
+                </div>
               </paper-material>
             </section>
 
             <section data-route="lifecycle">
               <paper-material elevation="1">
-                <lifecycle-callbacks id="1"></lifecycle-callbacks>
-                <lifecycle-callbacks id="2"></lifecycle-callbacks>
-                <lifecycle-callbacks id="3"></lifecycle-callbacks>
-                <lifecycle-callbacks id="4"></lifecycle-callbacks>
-                <lifecycle-callbacks id="5"></lifecycle-callbacks>
+                <lifecycle-examples id="1"></lifecycle-examples>
+                <lifecycle-examples id="2"></lifecycle-examples>
+                <lifecycle-examples id="3"></lifecycle-examples>
+                <lifecycle-examples id="4"></lifecycle-examples>
+                <lifecycle-examples id="5"></lifecycle-examples>
               </paper-material>
             </section>
 
             <section data-route="layout">
               <paper-material elevation="1">
-                <flexbox-layout></flexbox-layout>
+                <layout-examples></layout-examples>
               </paper-material>
             </section>
 
             <section data-route="input">
               <paper-material elevation="1">
                 <input-examples></input-examples>
+              </paper-material>
+            </section>
+
+            <section data-route="icons-images">
+              <paper-material elevation="1">
+                <icons-image-examples></icons-image-examples>
+              </paper-material>
+            </section>
+
+            <section data-route="ajax-forms">
+              <paper-material elevation="1">
+                <ajax-form-examples></ajax-form-examples>
               </paper-material>
             </section>
 

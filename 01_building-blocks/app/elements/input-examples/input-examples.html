@@ -3,6 +3,8 @@
 <link rel="import" href="../../bower_components/iron-input/iron-input.html">
 <link rel="import" href="../../bower_components/iron-autogrow-textarea/iron-autogrow-textarea.html">
 <link rel="import" href="../../bower_components/iron-dropdown/iron-dropdown.html">
+<link rel="import" href="../../bower_components/iron-swipeable-container/iron-swipeable-container.html">
+<link rel="import" href="../../bower_components/iron-collapse/iron-collapse.html">
 <dom-module id="input-examples">
   <template>
     <style>
@@ -20,13 +22,13 @@
         margin: 8px;
         font-size: small;
       }
-      div > div {
+      div div {
         background-color: #f9f9f9;
         border: 1px solid #333;
         padding: 8px;
         margin: 0px 8px 8px 0px;
       }
-      input, button, iron-autogrow-textarea, iron-dropdown {
+      input, button, iron-autogrow-textarea, iron-dropdown, iframe {
         display: block;
         padding: 4px;
         margin: 4px 0px;
@@ -47,13 +49,40 @@
         background-color: #f9f9f9;
       }
 
+      /* dropdown-content must be used for iron-dropdown to work
+      (although it doesn't need css) */
       .dropdown-content {
-        line-height: 20px;
         border-radius: 3px;
         padding: 4px;
+        margin: 4px;
         max-width: 250px;
+        line-height: 20px;
+        display: block;
+        box-shadow: 0px 2px 6px #ccc;
+        background-color: #fff;
+      }
+      iframe {
+        height: 300px;
+        width: 95%;
+      }
+      iron-swipeable-container {
+        @apply(--layout-vertical);
       }
 
+      .swiping {
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -webkit-user-select: none;
+        user-select: none;
+        cursor: default;
+      }
+
+      .horizontal {
+        @apply(--layout-horizontal);
+      }
+      .vertical {
+        @apply(--layout-vertical);
+      }
     </style>
 
 
@@ -187,14 +216,102 @@
     >&lt;iron-dropdown&gt;</a></h2>
 
     <div>
-      <div on-tap="openD1">Plain dropdown</div>
+      <div on-tap="openD1">Plain dropdown (from top-left)</div>
       <iron-dropdown id="d1">
-        <div class="dropdown-content">asdfasdfdown
-        dropdo wasdfkjs ssssnasddropdo wasdfkjs ssssnasddropdo wasdfkjs ssssnasddropdo wasdfkjs ssssnasddropdo wasdfkjs ssssnasd n
+        <div class="dropdown-content">
+          Dropdown content dropdown content dropdown content dropdown content dropdown content dropdown content dropdown content dropdown content dropdown content dropdown content dropdown content dropdown content dropdown content dropdown content dropdown content
         </div>
       </iron-dropdown>
     </div>
 
+    <div>
+      <div on-tap="openD2">Upward dropdown (from bottom-left)</div>
+      <iron-dropdown id="d2" vertical-align="bottom">
+        <div class="dropdown-content">
+          Dropdown content dropdown content dropdown content dropdown content dropdown content dropdown content dropdown content dropdown content dropdown content dropdown content dropdown content dropdown content dropdown content dropdown content dropdown content
+        </div>
+      </iron-dropdown>
+    </div>
+
+    <p class="newline">See the <a href="https://elements.polymer-project.org/elements/iron-dropdown?view=demo:demo/index.html&active=iron-dropdown"
+    >demo</a> (iframe below) and <a href="https://github.com/PolymerElements/iron-dropdown/blob/master/demo/"
+    >source</a>.</p>
+    <div>
+      <iframe src="https://elements.polymer-project.org/elements/iron-dropdown?view=demo:demo/index.html&active=iron-dropdown"></iframe>
+    </div>
+
+
+    <h2 class="newline"><a href="https://elements.polymer-project.org/elements/iron-selector"
+      >&lt;iron-selector&gt;</a></h2>
+
+    <p class="newline">See the <a href="https://elements.polymer-project.org/elements/iron-selector?view=demo:demo/index.html&active=iron-selector"
+      >demo</a> (iframe below) and <a href="https://github.com/PolymerElements/iron-selector/blob/master/demo/index.html"
+    >source</a>.</p>
+    <div>
+      <iframe src="https://elements.polymer-project.org/elements/iron-selector?view=demo:demo/index.html&active=iron-selector"></iframe>
+    </div>
+
+
+
+    <h2 class="newline"><a href="https://elements.polymer-project.org/elements/iron-swipeable-container"
+    >&lt;iron-swipeable-container&gt;</a></h2>
+
+    <div>
+      Horizontal swipe
+      <iron-swipeable-container>
+        <div>One</div>
+        <div>Two</div>
+        <div>Three</div>
+      </iron-swipeable-container>
+    </div>
+    <div>
+      Curve swipe
+      <iron-swipeable-container on-iron-swipe="handleSwipe" swipe-style="curve">
+        <div class="disable-swipe">Can't swipe me</div>
+        <div id="swiper">TODO figure out...</div>
+        <div id="swipee">calling swipe programmatically.</div>
+      </iron-swipeable-container>
+    </div>
+
+
+    <h2 class="newline"><a href="https://elements.polymer-project.org/elements/iron-collapse"
+    >&lt;iron-collapse&gt;</a></h2>
+
+    <div>
+      vertical animation
+      <button on-click="toggleC1">Toggle</button>
+      <iron-collapse id="c1" opened="true">
+        <div class="vertical">
+          <div>One</div>
+          <div>Two</div>
+          <div>Three</div>
+        </div>
+      </iron-collapse>
+    </div>
+
+    <div>
+      horizontal animation
+      <button on-click="toggleC2">Toggle</button>
+      <iron-collapse id="c2" opened="true" horizontal="true">
+        <div class="vertical">
+          <div>One</div>
+          <div>Two</div>
+          <div>Three</div>
+        </div>
+      </iron-collapse>
+    </div>
+
+    <div>
+      no animation
+      <button on-click="toggleC3">Toggle</button>
+      <iron-collapse id="c3" opened="true" no-animation="true">
+        <div class="vertical">
+          <div>One</div>
+          <div>Two</div>
+          <div>Three</div>
+        </div>
+      </iron-collapse>
+    </div>
   </template>
 
   <script>
@@ -234,7 +351,7 @@
             observer: "p18Observer"
           },
           p19: String,
-          p20: String,
+          p20: String
         },
 
         doButtonTap: function(event) {
@@ -298,10 +415,18 @@
             .replace(/'/g, "&#039;");
         },
 
+        openD1: function() { this.$.d1.open(); },
+        openD2: function() { this.$.d2.open(); },
 
-        openD1: function() {
-          this.$.d1.open();
-        }
+        handleSwipe: function(event, obj) {
+          console.log(event);
+          console.log(obj);
+        },
+
+        toggleC1: function() { this.$.c1.toggle(); },
+        toggleC2: function() { this.$.c2.toggle(); },
+        toggleC3: function() { this.$.c3.toggle(); },
+        toggleC4: function() { this.$.c4.toggle(); }
       });
     })();
   </script>
