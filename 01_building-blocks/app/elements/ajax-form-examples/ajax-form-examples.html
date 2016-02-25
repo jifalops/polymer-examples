@@ -4,6 +4,7 @@
 <link rel="import" href="../../bower_components/iron-ajax/iron-request.html">
 <link rel="import" href="../../bower_components/iron-jsonp-library/iron-jsonp-library.html">
 <link rel="import" href="../../bower_components/iron-form/iron-form.html">
+<link rel="import" href="../../bower_components/iron-input/iron-input.html">
 <dom-module id="ajax-form-examples">
   <template>
     <style>
@@ -31,16 +32,48 @@
         display: block;
         width: 95%;
       }
+      button {
+        display: block;
+      }
     </style>
 
     <h2 class="newline"><a href="https://elements.polymer-project.org/elements/iron-ajax"
       >&lt;iron-ajax&gt;</a></h2>
 
     <div>
-      iron ajax
-      <iron-ajax>
-        ajax
-      </iron-ajax>
+      Remote AJAX
+      <button on-tap="sendA1">Send</button>
+      Response: {{p1}}
+      <iron-ajax id="a1" verbose
+         url="http://httpbin.org/delay/1"
+         handle-as="json"
+         on-response="handleResponse1"
+         debounce-duration="500"></iron-ajax>
+    </div>
+
+    <div>
+      Local AJAX
+      <button on-tap="sendA2">Send</button>
+      Response: {{p2}}
+      <iron-ajax id="a2" verbose
+                 url="data.json"
+                 handle-as="json"
+                 on-response="handleResponse2"
+                 debounce-duration="500"></iron-ajax>
+    </div>
+
+
+    <h2 class="newline"><a href="https://elements.polymer-project.org/elements/iron-form"
+    >&lt;iron-form&gt;</a></h2>
+
+    <div>
+      Form 1
+      <form is="iron-form" action="http://httpbin.org/delay/1"
+          iron-form-submit="handleResponse1">
+        <input is="iron-input" name="name" label="label" required/>
+        <!--<input is="iron-input" name="name2" label="label2" required/>-->
+        <input type="submit" onclick="submit()"/>
+      </form>
     </div>
 
   </template>
@@ -49,7 +82,22 @@
     (function() {
       Polymer({
         is: 'ajax-form-examples',
-
+        properties: {
+          p1: String,
+          p1: String,
+        },
+        sendA1: function() {
+          this.$.a1.generateRequest();
+        },
+        sendA2: function() {
+          this.$.a2.generateRequest();
+        },
+        handleResponse1: function(event, element) {
+          this.p1 = JSON.stringify(event.target.lastResponse);
+        },
+        handleResponse2: function(event, element) {
+          this.p2 = JSON.stringify(event.target.lastResponse);
+        }
       });
     })();
   </script>

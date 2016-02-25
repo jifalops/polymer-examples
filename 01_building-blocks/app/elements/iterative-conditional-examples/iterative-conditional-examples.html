@@ -1,0 +1,96 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../../bower_components/iron-list/iron-list.html">
+<link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
+<dom-module id="iterative-conditional-examples">
+  <template>
+    <style>
+      :host {
+        display: block;
+        @apply(--layout-horizontal);
+        @apply(--layout-justified);
+        @apply(--layout-wrap);
+      }
+      div {
+        display: inline-block;
+        @apply(--layout-flex);
+        background-color: #ccc;
+        padding: 8px;
+        margin: 8px;
+        font-size: small;
+      }
+      div div {
+        background-color: #f9f9f9;
+        border: 1px solid #333;
+        padding: 8px;
+        margin: 0px 8px 8px 0px;
+      }
+      .newline {
+        display: block;
+        width: 95%;
+      }
+      button {
+        display: block;
+      }
+    </style>
+
+
+    <h2 class="newline"><a href="https://elements.polymer-project.org/elements/iron-list"
+      >&lt;iron-list&gt;</a> and
+      <a href="https://www.polymer-project.org/1.0/docs/devguide/templates.html#dom-repeat"
+      >&lt;template is="dom-repeat"&gt;</a></h2>
+
+    <div>
+      iron-list
+      <iron-list items="[[data]]" as="item" style="height:200px;">
+        <template>
+          <div>
+            Name: <span>[[item.name]]</span>
+          </div>
+        </template>
+      </iron-list>
+    </div>
+
+
+    <div>
+      dom-repeat
+      <template is="dom-repeat" items="[[data]]" style="height:200px;">
+        <div>
+          Name: <span>[[item.name]]</span>
+        </div>
+      </template>
+    </div>
+
+    <iron-ajax url="data.json" last-response="{{data}}" auto ></iron-ajax>
+
+
+    <h2 class="newline">
+      <a href="https://www.polymer-project.org/1.0/docs/devguide/templates.html#dom-if"
+      >&lt;template is="dom-if"&gt;</a></h2>
+
+
+
+  </template>
+
+  <script>
+    (function() {
+      Polymer({
+        is: 'iterative-conditional-examples',
+        properties: {
+//          data: {
+//            type: Array,
+//            value: [{name: 'A'}, {name: 'B'}, {name: 'C'},
+//              {name: 'D'}, {name: 'E'}, {name: 'F'},
+//              {name: 'G'}, {name: 'H'}, {name: 'I'}]
+//          }
+          data: Array
+        },
+//        handleResponse: function(a1, a2, a3) {
+//          console.log(a1);
+//          console.log(this.data);
+//        }
+      });
+    })();
+  </script>
+</dom-module>

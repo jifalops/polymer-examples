@@ -1,0 +1,66 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../../bower_components/iron-jsonp-library/iron-jsonp-library.html">
+<link rel="import" href="../../bower_components/iron-form/iron-form.html">
+<link rel="import" href="../../bower_components/iron-input/iron-input.html">
+<link rel="import" href="../../bower_components/iron-localstorage/iron-localstorage.html">
+<dom-module id="persistence-examples">
+  <template>
+    <style>
+      :host {
+        display: block;
+        @apply(--layout-horizontal);
+        @apply(--layout-justified);
+        @apply(--layout-wrap);
+      }
+      div {
+        display: inline-block;
+        @apply(--layout-flex);
+        background-color: #ccc;
+        padding: 8px;
+        margin: 8px;
+        font-size: small;
+      }
+      div > div {
+        background-color: #f9f9f9;
+        border: 1px solid #333;
+        padding: 8px;
+        margin: 0px 8px 8px 0px;
+      }
+      .newline {
+        display: block;
+        width: 95%;
+      }
+      button {
+        display: block;
+      }
+    </style>
+
+
+    <h2 class="newline"><a href="https://elements.polymer-project.org/elements/iron-localstorage"
+      >&lt;iron-localstorage&gt;</a></h2>
+
+
+    <h2 class="newline"><a href="https://github.com/addyosmani/polymer-localforage"
+      >&lt;polymer-localforage&gt;</a></h2>
+
+
+    <h2 class="newline"><a href="https://elements.polymer-project.org/elements/firebase-element"
+      >&lt;firebase-element&gt;</a></h2>
+
+
+
+  </template>
+
+  <script>
+    (function() {
+      Polymer({
+        is: 'persistence-examples',
+        properties: {
+          p1: String
+        }
+      });
+    })();
+  </script>
+</dom-module>

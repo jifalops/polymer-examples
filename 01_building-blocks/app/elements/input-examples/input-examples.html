@@ -5,86 +5,13 @@
 <link rel="import" href="../../bower_components/iron-dropdown/iron-dropdown.html">
 <link rel="import" href="../../bower_components/iron-swipeable-container/iron-swipeable-container.html">
 <link rel="import" href="../../bower_components/iron-collapse/iron-collapse.html">
+<link rel="import" href="../../styles/shared-styles.html">
+<link rel="import" href="styles.html">
+<link rel="import" href="scripts.html">
 <dom-module id="input-examples">
   <template>
-    <style>
-      :host {
-        display: block;
-        @apply(--layout-horizontal);
-        @apply(--layout-justified);
-        @apply(--layout-wrap);
-      }
-      div {
-        display: inline-block;
-        @apply(--layout-flex);
-        background-color: #ccc;
-        padding: 8px;
-        margin: 8px;
-        font-size: small;
-      }
-      div div {
-        background-color: #f9f9f9;
-        border: 1px solid #333;
-        padding: 8px;
-        margin: 0px 8px 8px 0px;
-      }
-      input, button, iron-autogrow-textarea, iron-dropdown, iframe {
-        display: block;
-        padding: 4px;
-        margin: 4px 0px;
-      }
-      /*input { width: 10em; }*/
-      span {
-        font-style: italic;
-      }
-      .newline {
-        display: block;
-        width: 100%;
-      }
-      iron-autogrow-textarea {
-        background-color: #f9f9f9;
-        width: 20em;
-      }
-      iron-dropdown {
-        background-color: #f9f9f9;
-      }
-
-      /* dropdown-content must be used for iron-dropdown to work
-      (although it doesn't need css) */
-      .dropdown-content {
-        border-radius: 3px;
-        padding: 4px;
-        margin: 4px;
-        max-width: 250px;
-        line-height: 20px;
-        display: block;
-        box-shadow: 0px 2px 6px #ccc;
-        background-color: #fff;
-      }
-      iframe {
-        height: 300px;
-        width: 95%;
-      }
-      iron-swipeable-container {
-        @apply(--layout-vertical);
-      }
-
-      .swiping {
-        -moz-user-select: none;
-        -ms-user-select: none;
-        -webkit-user-select: none;
-        user-select: none;
-        cursor: default;
-      }
-
-      .horizontal {
-        @apply(--layout-horizontal);
-      }
-      .vertical {
-        @apply(--layout-vertical);
-      }
-    </style>
-
+    <style include="shared-styles"></style>
+    <style include="input-examples-styles"></style>
 
     <!--
       Double-colon binds a property to an event and updates that property when the event occurs.
@@ -163,8 +90,8 @@
     <div>
       Validation: Create your own (complex)
       <input is="iron-input" bind-value="{{p10}}" placeholder="[allowed chars]"/>
-      <input is="iron-input" bind-value="{{p11}}" style="width: 40em;"/>
-      <input is="iron-input" bind-value="{{p12}}" style="width: 40em;"
+      <input is="iron-input" bind-value="{{p11}}" style="width: 30em;"/>
+      <input is="iron-input" bind-value="{{p12}}" style="width: 30em;"
              prevent-invalid-input allowed-pattern="{{p10}}"/>
       Result: <span>{{p13}}</span>
     </div>
@@ -313,121 +240,5 @@
       </iron-collapse>
     </div>
   </template>
-
-  <script>
-    (function() {
-      Polymer({
-        is: 'input-examples',
-
-        properties: {
-          p1: String,
-          p2: String,
-          p3: String,
-          p4: String,
-          p5: {
-            type: String,
-            value: "default value"
-          },
-          p6: String,
-          p7: String,
-          p8: String,
-          p9: String,
-          p10: String,
-          p11: {
-            type: RegExp,
-            value: /^[a-zA-Z0-9][a-zA-Z0-9.+]*@[a-zA-Z0-9\-]+(\.[a-zA-Z\-]+)+$/
-          },
-          p12: {
-            type: String,
-            observer: "p12Observer"
-          },
-          p13: String,
-          p14: String,
-          p15: String,
-          p16: String,
-          p17: String,
-          p18: {
-            type: String,
-            observer: "p18Observer"
-          },
-          p19: String,
-          p20: String
-        },
-
-        doButtonTap: function(event) {
-          event.target.innerHTML = "Tapped";
-        },
-
-        setButtonText: function(event) {
-          event.target.innerHTML = this.escapeHTML(event.target.dataText);
-        },
-
-        getProp: function(event) {
-          var target = this._findDataArg(event.target, 'target');
-          var prop = this._findDataArg(event.target, 'property');
-          return this.$[target][prop];
-        },
-
-        setProp: function(event) {
-          var target = this._findDataArg(event.target, 'target');
-          var prop = this._findDataArg(event.target, 'property');
-          var value = this._findDataArg(event.target, 'value');
-
-          if (prop == 'innerHTML') value = this.escapeHTML(value);
-
-          if (target == 'this') {
-            console.log('Setting this.' + prop + ' = ' + value);
-            this[prop] = value;
-          } else {
-            console.log('Setting this.$.' + target + '.' + prop + ' = ' + value);
-            this.$[target][prop] = value;
-          }
-        },
-
-        /**
-         * The last specified data-<name> attribute is placed as a property on the element,
-         * e.g. element.dataName. Other data-<name> attributes are placed inside the dataset
-         * property, e.g. element.dataset.<name>. Why????
-         */
-        _findDataArg: function(el, name) {
-          var arg = el['data' + name.charAt(0).toUpperCase() + name.slice(1)];
-          if (arg === undefined) arg = el.dataset[name];
-          return arg;
-        },
-
-        p12Observer: function(value) {
-          this.p13 = this.p11.test(value);
-        },
-        p18Observer: function(value) {
-          this.$.p18.innerHTML = this.escapeHTML(value).replace(/\r?\n/g, "<br />");
-        },
-        p19select: function(event) {
-          this.p19 = this.$.p19.selectionStart;
-          this.p20 = this.$.p19.selectionEnd;
-        },
-
-        escapeHTML: function(unsafe) {
-          return unsafe
-            .replace(/&/g, "&amp;")
-            .replace(/</g, "&lt;")
-            .replace(/>/g, "&gt;")
-            .replace(/"/g, "&quot;")
-            .replace(/'/g, "&#039;");
-        },
-
-        openD1: function() { this.$.d1.open(); },
-        openD2: function() { this.$.d2.open(); },
-
-        handleSwipe: function(event, obj) {
-          console.log(event);
-          console.log(obj);
-        },
-
-        toggleC1: function() { this.$.c1.toggle(); },
-        toggleC2: function() { this.$.c2.toggle(); },
-        toggleC3: function() { this.$.c3.toggle(); },
-        toggleC4: function() { this.$.c4.toggle(); }
-      });
-    })();
-  </script>
+  <script src="script.js"></script>
 </dom-module>

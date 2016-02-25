@@ -1,0 +1,67 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="my-animatable1.html">
+<link rel="import" href="my-animatable2.html">
+<dom-module id="animation-examples">
+  <template>
+    <style>
+      :host {
+        display: block;
+        @apply(--layout-horizontal);
+        @apply(--layout-justified);
+        @apply(--layout-wrap);
+      }
+      div {
+        display: inline-block;
+        @apply(--layout-flex);
+        background-color: #ccc;
+        padding: 8px;
+        margin: 8px;
+        font-size: small;
+      }
+      div div {
+        background-color: #f9f9f9;
+        border: 1px solid #333;
+        padding: 8px;
+        margin: 0px 8px 8px 0px;
+      }
+      .newline {
+        display: block;
+        width: 95%;
+      }
+      button {
+        display: block;
+      }
+    </style>
+
+
+    <h2 class="newline"><a href="https://elements.polymer-project.org/elements/neon-animation"
+      >&lt;neon-animation&gt;</a></h2>
+
+    <div>
+      <my-animatable1 on-tap="animate"></my-animatable1>
+    </div>
+
+    <div>
+      <my-animatable2 on-tap="animate"></my-animatable2>
+    </div>
+    <p class="newline"></p>
+    <div>
+      <my-animatable3 on-tap="animate"></my-animatable3>
+    </div>
+
+  </template>
+
+  <script>
+    (function() {
+      Polymer({
+        is: 'animation-examples',
+        properties: {
+        },
+        animate: function(event) {
+          event.target.animate();
+        }
+      });
+    })();
+  </script>
+</dom-module>

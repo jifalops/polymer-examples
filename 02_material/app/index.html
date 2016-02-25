@@ -79,40 +79,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <span>Home</span>
           </a>
 
-          <a data-route="lifecycle" href="{{baseUrl}}lifecycle">
-            <span>Lifecycle</span>
+          <a data-route="users" href="{{baseUrl}}users">
+            <iron-icon icon="info"></iron-icon>
+            <span>Users</span>
           </a>
 
-          <a data-route="layout" href="{{baseUrl}}layout">
-            <span>Layout</span>
-          </a>
-
-          <a data-route="input" href="{{baseUrl}}input">
-            <span>Input</span>
-          </a>
-
-          <a data-route="icons-images" href="{{baseUrl}}icons-images">
-            <span>Icons/Images</span>
-          </a>
-
-          <a data-route="ajax-forms" href="{{baseUrl}}ajax-forms">
-            <span>AJAX &amp; forms</span>
-          </a>
-
-          <a data-route="persistence" href="{{baseUrl}}persistence">
-            <span>Persistent Storage</span>
-          </a>
-
-          <a data-route="environment" href="{{baseUrl}}environment">
-            <span>Environment</span>
-          </a>
-
-          <a data-route="iterative-conditional" href="{{baseUrl}}iterative-conditional">
-            <span>Iterative/Conditional</span>
-          </a>
-
-          <a data-route="animations" href="{{baseUrl}}animations">
-            <span>Animations</span>
+          <a data-route="contact" href="{{baseUrl}}contact">
+            <iron-icon icon="mail"></iron-icon>
+            <span>Contact</span>
           </a>
         </paper-menu>
       </paper-scroll-header-panel>
@@ -143,160 +117,64 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <!-- Main Content -->
         <div class="content">
           <iron-pages attr-for-selected="data-route" selected="{{route}}">
-
             <section data-route="home">
               <paper-material elevation="1">
-                <div>
-                  Layout
-                  <ul>
-                    <li>iron-flex-layout</li>
-                  </ul>
-                </div>
+                <my-greeting></my-greeting>
 
-                <div>
-                  Input
-                  <ul>
-                    <li>iron-autogrow-textarea</li>
-                    <li>iron-collapse</li>
-                    <li>iron-dropdown</li>
-                    <li>iron-input</li>
-                    <li>* iron-label</li>
-                    <li>iron-selector</li>
-                    <li>iron-swipeable-container</li>
-                  </ul>
-                </div>
+                <p class="subhead">You now have:</p>
+                <my-list></my-list>
 
-                <div>
-                  Icons and Images
-                  <ul>
-                    <li>iron-icon</li>
-                    <li>iron-icons</li>
-                    <li>iron-image</li>
-                  </ul>
-                </div>
-
-                <div>
-                  AJAX and Forms
-                  <ul>
-                    <li>iron-ajax</li>
-                    <li>iron-jsonp-library</li>
-                    <li>iron-form</li>
-                  </ul>
-                </div>
-
-                <div>
-                  Persistent Storage
-                  <ul>
-                    <li>iron-localstorage</li>
-                    <li>firebase-element</li>
-                    <li>iron-meta</li>
-                    <li>iron-signals?</li>
-                  </ul>
-                </div>
-
-                <div>
-                  Environment
-                  <ul>
-                    <li>iron-media-query</li>
-                    <li>iron-page-url</li>
-                    <li>iron-pages?</li>
-                  </ul>
-                </div>
-
-                <div>
-                  Iterative and Conditional
-                  <ul>
-                    <li>iron-list</li>
-                    <li>dom-repeat</li>
-                    <li>dom-if</li>
-                  </ul>
-                </div>
-
-                <div>
-                  Documentation
-                  <ul>
-                    <li>iron-component-page</li>
-                    <li>iron-demo-helpers</li>
-                    <li>iron-doc-viewer</li>
-                    <li>iron-test-helpers</li>
-                  </ul>
-                </div>
-
-                <div>
-                  Animations
-                  <ul>
-                    <li>neon-animation</li>
-                  </ul>
-                </div>
-
-                <div>
-                  Accessibility
-                  <ul>
-                    <li>iron-a11y-announcer</li>
-                    <li>iron-a11y-keys</li>
-                  </ul>
-                </div>
+                <p>Looking for more Web App layouts? Check out our <a href="https://github.com/PolymerElements/app-layout-templates">layouts</a> collection. You can also <a href="http://polymerelements.github.io/app-layout-templates/">preview</a> them live.</p>
               </paper-material>
-            </section>
 
-            <section data-route="lifecycle">
               <paper-material elevation="1">
-                <lifecycle-examples id="1"></lifecycle-examples>
-                <lifecycle-examples id="2"></lifecycle-examples>
-                <lifecycle-examples id="3"></lifecycle-examples>
-                <lifecycle-examples id="4"></lifecycle-examples>
-                <lifecycle-examples id="5"></lifecycle-examples>
+                <p>This is another card.</p>
               </paper-material>
-            </section>
 
-            <section data-route="layout">
               <paper-material elevation="1">
-                <layout-examples></layout-examples>
+                <h1 id="license">License</h1>
+                <p>Everything in this repo is BSD style license unless otherwise specified.</p>
+                <p>Copyright (c) 2015 The Polymer Authors. All rights reserved.</p>
+                <p>Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:</p>
+                <ul>
+                <li>Redistributions of source code must retain the above copyright
+                notice, this list of conditions and the following disclaimer.</li>
+                <li>Redistributions in binary form must reproduce the above
+                copyright notice, this list of conditions and the following disclaimer
+                in the documentation and/or other materials provided with the
+                distribution.</li>
+                <li>Neither the name of Google Inc. nor the names of its
+                contributors may be used to endorse or promote products derived from
+                this software without specific prior written permission.</li>
+                </ul>
+                <p>THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</p>
               </paper-material>
             </section>
 
-            <section data-route="input">
+            <section data-route="users">
               <paper-material elevation="1">
-                <input-examples></input-examples>
+                <h2 class="page-title">Users</h2>
+                <p>This is the users section</p>
+                <a href$="{{baseUrl}}users/Addy">Addy</a><br>
+                <a href$="{{baseUrl}}users/Rob">Rob</a><br>
+                <a href$="{{baseUrl}}users/Chuck">Chuck</a><br>
+                <a href$="{{baseUrl}}users/Sam">Sam</a>
               </paper-material>
             </section>
 
-            <section data-route="icons-images">
+            <section data-route="user-info">
               <paper-material elevation="1">
-                <icons-image-examples></icons-image-examples>
+                <h2 class="page-title">User: {{params.name}}</h2>
+                <div>This is {{params.name}}'s section</div>
               </paper-material>
             </section>
 
-            <section data-route="ajax-forms">
+            <section data-route="contact">
               <paper-material elevation="1">
-                <ajax-form-examples></ajax-form-examples>
+                <h2 class="page-title">Contact</h2>
+                <p>This is the contact section</p>
               </paper-material>
             </section>
-
-            <section data-route="persistence">
-              <paper-material elevation="1">
-                <persistence-examples></persistence-examples>
-              </paper-material>
-            </section>
-
-            <section data-route="environment">
-              <paper-material elevation="1">
-                <environment-examples></environment-examples>
-              </paper-material>
-            </section>
-
-            <section data-route="iterative-conditional">
-              <paper-material elevation="1">
-                <iterative-conditional-examples></iterative-conditional-examples>
-              </paper-material>
-            </section>
-
-            <section data-route="animations">
-              <paper-material elevation="1">
-                <animation-examples></animation-examples>
-              </paper-material>
-            </section>
-
           </iron-pages>
         </div>
       </paper-scroll-header-panel>

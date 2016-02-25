@@ -1,0 +1,130 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/iron-page-url/iron-page-url.html">
+<link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
+<dom-module id="environment-examples">
+  <template>
+    <style>
+      :host {
+        display: block;
+        @apply(--layout-horizontal);
+        @apply(--layout-justified);
+        @apply(--layout-wrap);
+      }
+      div {
+        display: inline-block;
+        @apply(--layout-flex);
+        background-color: #ccc;
+        padding: 8px;
+        margin: 8px;
+        font-size: small;
+      }
+      div div {
+        background-color: #f9f9f9;
+        border: 1px solid #333;
+        padding: 8px;
+        margin: 0px 8px 8px 0px;
+      }
+      .newline {
+        display: block;
+        width: 95%;
+      }
+      button {
+        display: block;
+      }
+    </style>
+
+
+    <h2 class="newline"><a href="https://elements.polymer-project.org/elements/iron-media-query"
+      >&lt;iron-media-query&gt;</a></h2>
+
+    <h2 class="newline"><a href="https://elements.polymer-project.org/elements/iron-page-url"
+      >&lt;iron-page-url&gt;</a></h2>
+
+    <!--<iron-page-url id="pageurl"></iron-page-url>-->
+    <div>
+      <div>Path: {{pageurl.path}}</div>
+      <div>Query: {{pageurl.query}}</div>
+      <div>Hash: {{pageurl.hash}}</div>
+      <div>Dwell time: {{pageurl.dwellTime}}</div>
+      <div>URL space: {{pageurl.urlSpaceRegex}}</div>
+    </div>
+
+    <div>
+      <div>Path: {{p1}}</div>
+      <div>Query: {{p2}}</div>
+      <div>Hash: {{p3}}</div>
+      <div>Dwell time: {{p4}}</div>
+      <div>URL space: {{p5}}</div>
+    </div>
+
+    <!--<div>-->
+      <!--Change query: <input value="{{p2}}" on-change="updateQuery"/>-->
+    <!--</div>-->
+
+    <h2 class="newline"><a href="https://elements.polymer-project.org/elements/iron-pages"
+    >&lt;iron-pages&gt;</a></h2>
+
+    <div>
+      Click the page to move to the next
+      <iron-pages selected="0" on-tap="selectNext" id="pages">
+        <div>One</div>
+        <div>Two</div>
+        <div>Three</div>
+      </iron-pages>
+    </div>
+
+  </template>
+
+  <script>
+    (function() {
+      Polymer({
+        is: 'environment-examples',
+        properties: {
+          pageurl: {
+            type: Object,
+            observer: 'pageurlChanged',
+            value: function() { return {}; }
+          },
+          p1: String,
+          p2: String,
+          p3: String,
+          p4: String,
+          p5: String,
+        },
+        ready: function() {
+//          var el = this.$.pageurl;
+//          var p = this.pageurl;
+//          p.path = el.path;
+//          p.query = el.query;
+//          p.hash = el.hash;
+//          p.dwellTime = el.dwellTime;
+//          p.urlSpaceRegex = el.urlSpaceRegex;
+//          console.log(p);
+//          console.log(el);
+//
+//          this.p1 = this.$.pageurl.path;
+//          this.p2 = this.$.pageurl.query;
+//          this.p3 = this.$.pageurl.hash;
+//          this.p4 = this.$.pageurl.dwellTime;
+//          this.p5 = this.$.pageurl.urlSpaceRegex;
+        },
+        pageurlChanged: function(event) {
+//          var el = this.$.pageurl;
+//          var p = this.pageurl;
+//          el.path = p.path;
+//          el.query = p.query;
+//          el.hash = p.hash;
+//          el.dwellTime = p.dwellTime;
+//          el.urlSpaceRegex = p.urlSpaceRegex;
+//          console.log(p);
+//          console.log(el);
+        },
+
+        selectNext: function(event) {
+          this.$.pages.selectNext();
+        }
+      });
+    })();
+  </script>
+</dom-module>
